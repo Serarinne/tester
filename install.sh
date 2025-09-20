@@ -1,7 +1,7 @@
 #!/bin/bash
 timedatectl set-timezone Asia/Jakarta
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
-export SCRIPT_SERVER="https://raw.githubusercontent.com/Serarinne/SerarinneVPN/main"
+export SCRIPT_SERVER="https://raw.githubusercontent.com/Serarinne/tester/main"
 export IP_SERVER=$(wget -qO- ipv4.icanhazip.com)
 
 clear
