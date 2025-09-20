@@ -1,0 +1,103 @@
+{
+    "log" : {
+        "access": "none",
+        "error": "none",
+        "loglevel": "warning"
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": 10085,
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "127.0.0.1"
+            },
+            "tag": "API"
+        },
+        {
+            "listen": "127.0.0.1",
+            "port": "9000",
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+{"id": "10d9785f-0e59-4988-aee1-322351b4de7f","alterId": 0,"level": 0,"email": "Admin"}
+#USER_LIST
+                ]
+            },
+            "streamSettings":{
+                "network": "ws",
+                "wsSettings": {
+                    "path": "/vmess"
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "DIRECT"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "BLOCKED"
+        }
+    ],
+    "routing": {
+        "rules": [
+            {
+                "domainMatcher": "hybrid",
+                "type": "field",
+                "protocol": [
+                    "http",
+                    "tls"
+                ],
+                "outboundTag": "direct"
+            },
+            {
+                "type": "field",
+                "domain": [
+                    "ext:geosite.dat:category-ads-all"
+                ],
+                "outboundTag": "BLOCKED"
+            },
+            {
+                "type": "field",
+                "inboundTag": [
+                    "API"
+                ],
+                "outboundTag": "API"
+            },
+            {
+                "type": "field",
+                "protocol": [
+                    "bittorrent"
+                ],
+                "outboundTag": "BLOCKED"
+            }
+        ]
+    },
+    "stats": {},
+    "api": {
+        "tag": "API",
+        "services": [
+            "HandlerService",
+            "LoggerService",
+            "StatsService"
+        ]
+    },
+    "policy": {
+        "levels": {
+            "0": {
+                "statsUserDownlink": true,
+                "statsUserUplink": true,
+                "statsUserOnline": true
+            }
+        },
+        "system": {
+            "statsInboundUplink": true,
+            "statsInboundDownlink": true,
+            "statsOutboundUplink" : true,
+            "statsOutboundDownlink" : true
+        }
+    }
+}
