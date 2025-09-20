@@ -9,10 +9,10 @@ apt-get update && apt-get upgrade -y && apt dist-upgrade -y && update-grub && re
 ```
 Installation<br>
 ```html
-cd /root && wget https://raw.githubusercontent.com/Serarinne/SerarinneVPN/main/install.sh && chmod +x install.sh && ./install.sh
+cd /root && wget https://raw.githubusercontent.com/Serarinne/tester/main/install.sh && chmod +x install.sh && ./install.sh
 ```
 
 Bot<br>
 ```html
-cd /root && wget https://raw.githubusercontent.com/Serarinne/SerarinneVPN/main/installbot.sh && chmod +x installbot.sh && ./installbot.sh
+cd /root && wget https://raw.githubusercontent.com/Serarinne/tester/main/installbot.sh && chmod +x installbot.sh && ./installbot.sh
 ```
